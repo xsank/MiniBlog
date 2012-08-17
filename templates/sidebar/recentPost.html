@@ -1,0 +1,5 @@
+<ul>
+    {%for post in recentPost%}
+        <li><a href='{%url postByID post.id%}'>{{post.title}}</a></li>
+    {%endfor%}
+</ul>

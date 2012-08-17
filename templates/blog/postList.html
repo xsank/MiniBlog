@@ -1,0 +1,30 @@
+{%extends 'base/base.html'%}
+{%block content%}
+    {%if postList.count%}
+        {%for post in postList%}
+            {%include 'blog/postExcerpt.html'%}
+        {%endfor%}
+    {%else%}
+        <p>抱歉！暂时还没有文章。</p>
+    {%endif%}
+    <div id='paginator'>
+        {%if is_paginated %}
+            {%if has_previous%}
+                <a href='./?page={{previous}}'>上一页</a>
+            {%endif%}
+            <span>
+				{%for p in page_range%}
+                    {%ifequal p page%}
+                        <span class='current'>{{p}}</span>
+                    {%else%}
+                        <a href='./?page={{p}}' title='第{{p}}页'>{{p}}</a>
+                    {%endifequal%}
+                {%endfor%}
+			</span>
+            {%if has_next%}
+                <a href='./?page={{next}}'>下一页</a>
+            {%endif%}
+            第{{page}}/{{pages}}页
+        {%endif%}
+    </div>
+{%endblock%}

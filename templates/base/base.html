@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta content="Xsank's Blog,记录生活的点滴。。。。。。">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% if not isTag and not isCategory %}
+        <title>Xsank's Blog</title>
+    {% endif %}
+    <title>{% firstof isAbout isContact post.title isTag isCategory isSearch %}</title>
+<link href="/static/basecss/style.css" rel="stylesheet" type="text/css" media="screen">
+<link href="/static/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet"/>
+<link href="/static/syntaxhighlighter/styles/shThemeDefault.css" type="text/css" rel="stylesheet"/>
+<link rel="Blog Icon" href="/static/image/myico.ico">
+</head>
+<body>
+<div id='wrapper'>
+    <div id='header'>
+        <div id='logo'><a href='/'><img src='/static/image/xsank.bmp'/></a></div>
+        <div id='site-description'>
+            <span>生命不息，奋斗不止。。。。。。</span>
+        </div>
+        <div id='bgimage'><img src='/static/image/bgimage.jpg' width='940' height='198'></div>
+        <div id='access'>
+            <div class='menu'>
+                <ul>
+                    <li><a href='/'>首页</a></li>
+                    <li><a href='/about/'>关于网站</a></li>
+                    <li><a href='/contact/'>有事找我</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id='main'>
+        <div id='container'>
+            <div id='content'>
+                {%block content%}
+                {%endblock%}
+            </div>
+        </div>
+        <div id='widget-area'>
+            {%include 'sidebar/sidebar.html'%}
+        </div>
+
+    </div>
+
+    <div id='footer'>
+        <div id='colophon'>
+            <div id="site-info">
+                <a href="/" title="Xsank" rel="home">Xsank</a>
+                <span> Copyright &copy 2012 All rights reserved.</span>
+            </div>
+            <div id='site-generator'>
+                <span>Powered by:</span>
+				<span><a href='http://www.python.org/' target="_blank" title='Python官网'>
+                    <img src='/static/image/python-logo.jpg' width='80' height='15'>
+                </a></span>
+				<span><a href='https://www.djangoproject.com/' target="_blank" title='Django官网'>
+                    <img src='/static/image/django-logo.gif' width='80' height='15'>
+                </a></span>
+                <span><img src='/static/image/apache-logo.jpg' width='80' height='15'></span>
+				<span><a href='http://www.webfaction.com?affiliate=bojanliu' target='_blank' title='Webfaction'>
+                    <img src='/static/image/webfaction-logo.png' width='80' height='15'>
+                </a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shCore.js"></script>
+<script type = "text/javascript"  src = "/static/syntaxhighlighter/scripts/shBrushCss.js" ></script>
+<script type = "text/javascript"  src = "/static/syntaxhighlighter/scripts/shBrushJScript.js" ></script>
+<script type = "text/javascript"  src = "/static/syntaxhighlighter/scripts/shBrushPhp.js" ></script>
+<script type = "text/javascript"  src = "/static/syntaxhighlighter/scripts/shBrushSql.js" ></script>
+<script type = "text/javascript"  src = "/static/syntaxhighlighter/scripts/shBrushVb.js" ></script>
+<script type = "text/javascript"  src = "/static/syntaxhighlighter/scripts/shBrushPython.js" ></script>
+<script  src = "/static/syntaxhighlighter/scripts/shBrushXml.js" ></script>
+<script  type = "text/javascript">
+    SyntaxHighlighter.config.clipboardSwf = "/static/syntaxhihglighter/scripts/clipboard.swf";
+    SyntaxHighlighter.all();
+</script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23803260-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'http://www.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</body>
+</html>

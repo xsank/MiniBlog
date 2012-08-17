@@ -1,0 +1,5 @@
+<ul>
+    {%for category in categories%}
+        <li><a href='{%url postByCategory category.id%}'>{{category.cateName}}({{category.post_set.count}})</a></li>
+    {%endfor%}
+</ul>

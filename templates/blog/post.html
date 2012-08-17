@@ -1,0 +1,70 @@
+{% load comments %}
+{% get_comment_count for post as commentCount %}
+
+<div>
+    <h2 class='entry-title'>
+        <a href='{%url postByID post.id%}'>{{post.title}}</a>
+    </h2>
+    <div class='entry-meta'>
+        <span class='riqi'>      日期：{{post.pubTime|date:'Y年m月d日'}}           </span>
+        <span class='zuozhe'>      作者：{{post.author|capfirst}}           </span>
+        <span class='pinglun'>      <a href='{%url postByID post.id%}#comments'>评论({{commentCount}})</a>         </span>
+        <span class='category'>分类：{%for category in post.categories.all%}<a href='{%url postByCategory category.id%}'>{{category}}</a>{%endfor%}</span>
+    </div>
+    <div class='entry-content'>{{post.body|safe}}</div>
+    <div class='entry-tags'>
+        标签：{%for tag in post.tags.all%}
+        <a href='{%url postByID tag.id%}'>{{tag}}</a>
+    {%endfor%}
+    </div>
+    <div class='post_url'>
+        要转载本文，请注明原文地址：
+        <a href='{%url postByID post.id%}'>http://xsank.net{%url postByID post.id%}</a>
+    </div>
+    <div id='bottom-info'>
+        <div id='befor-post'>
+            {%if post.isBigestID%}
+                最后一篇
+            {%else%}
+                <a href='{%url postByID post.id|add:'1'%}'>上一篇：{{post.prevPostTitle}}</a>
+            {%endif%}
+        </div>
+        <div id='after-post'>
+            {%if post.isSmallestID%}
+                最早一篇
+            {%else%}
+                <a href='{%url postByID post.id|add:'-1'%}'>下一篇：{{post.nextPostTitle}}</a>
+            {%endif%}
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div id='jiathis' style='margin-bottom:40px;'>
+        <!-- JiaThis Button BEGIN -->
+        <div id="ckepop"><span class="jiathis_txt">分享到：</span>
+            <a class="jiathis_button_qzone"></a>
+            <a class="jiathis_button_tsina"></a>
+            <a class="jiathis_button_tqq"></a>
+            <a class="jiathis_button_renren"></a>
+            <a class="jiathis_button_kaixin001"></a>
+            <a class="jiathis_button_douban"></a>
+            <a class="jiathis_button_fb"></a>
+            <a class="jiathis_button_twitter"></a>
+            <a class="jiathis_button_tumblr"></a>
+            <a class="jiathis_button_linkedin"></a>
+            <a class="jiathis_button_delicious"></a>
+            <a class="jiathis_counter_style"></a>
+        </div>
+        <script type="text/javascript" >
+            var jiathis_config={
+                data_track_clickback:true,
+                summary:"",
+                hideMore:true
+            }
+        </script>
+        <script type="text/javascript"
+                src="http://v2.jiathis.com/code/jia.js?uid=1579398" charset="utf-8">
+        </script>
+        <!-- JiaThis Button END -->
+    </div>
+    <div class='Separator-line'></div>
+</div>

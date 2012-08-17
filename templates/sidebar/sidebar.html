@@ -1,0 +1,50 @@
+{% load sidebar %}
+
+<ul>
+    <li>
+        <h3 class='widget-title'>赞一下</h3>
+        <div id='plusone'><g:plusone href="http://www.xsank.net" size="medium"></g:plusone></div>
+        <div>喜欢本站？赞一下！</div>
+    </li>
+    <br/>
+    <li>
+        <div>
+            <h3 class='widget-title'>搜索</h3>
+            <form method='get' action='{%url postSearch%}'>
+                <div>
+                    <input type='text' name='q' value=''/>
+                    <input type='submit' value='搜索'/>
+                </div>
+            </form>
+        </div>
+    </li>
+    <br/>
+    <li>
+        <h3 class='widget-title'>最近文章</h3>
+        {%recentPost%}
+    </li>
+    <br/>
+    <li>
+        <h3 class='widget-title'>分类</h3>
+        {%blogCategory%}
+    </li>
+    <br/>
+    <li>
+        <h3 class='widget-title'>标签</h3>
+        {%blogTag%}
+    </li>
+    <br/>
+    <li>
+        <h3 class='widget-title'>最近评论</h3>
+        {%recentComment%}
+    </li>
+    <br/>
+    <li>
+        <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2878012362&verifier=05eec98a&dpc=1"></iframe>
+    </li>
+    <br/>
+    <li>
+        <h3 class='widget-title'>链接</h3>
+        {%blogLink%}
+    </li>
+</ul>

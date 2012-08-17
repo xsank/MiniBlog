@@ -1,0 +1,67 @@
+{%extends 'base/base.html'%}
+{%block content%}
+{%include 'blog/post.html'%}
+<style type="text/css">
+    label{display:inline;float:left;width:100px;}
+</style>
+<div>
+    <div>
+        {%load comments%}
+        {%get_comment_list for post as commentList%}
+        {%get_comment_count for post as commentCount%}
+        {%if commentList%}
+            <h2><a name='comments'>共有{{commentCount}}条评论：</a></h2>
+            {%for comment in commentList%}
+                <div id='comment-list'>
+                    <div class='user-face'>
+                        <img src='{%gravatar_url comment.user_email%}' alt="" width='40px' height='40px'/>
+                    </div>
+
+                    <div class='reply-doc'>
+                        <div class='reply-title'>
+                            <div class='reply-author'>
+                                Said by <a href='{{comment.user_url}}' name='{{comment.user_name}}'>
+                                {{comment.user_name}}
+                            </a>
+                            </div>
+                            <div class='reply-date'>
+                                On {{comment.submit_date|date:'Y-m-d H:i:s'}} | #{{forloop.counter}}
+                            </div>
+                            <div class='clear'></div>
+                        </div>
+                        <div class='reply-body'>
+                            {{comment.comment|safe}}
+                        </div>
+                    </div>
+                    <div class='clear'>
+                    </div>
+                    <div class='reply-line'>
+                    </div>
+                </div>
+            {%endfor%}
+        {%else%}
+            <h2><a name='comments'>还没有评论哦，抢个沙发吧！</a></h2>
+        {%endif%}
+    </div>
+    <div>
+        {%get_comment_form for post as form%}
+        <form action='{%comment_form_target%}' method='post'>
+            {% csrf_token %}{{form.object_pk}}{{form.content_type}}{{form.timestamp}}{{form.security_hash}}
+            <p><label for="id_name">姓名（必填）：</label><input name="name" id="id_name"></p>
+            <p><label for="id_email">邮箱（必填）：</label><input name="email" id="id_email"></p>
+            <p><label for="id_url">网站（可选）：</label><input name="url" id="id_url"></p>
+            <p><label for="id_comment">评论（必填）：</label></p>
+            <p><textarea id="id_comment" rows="10" cols="40" name="comment"></textarea></p>
+            <p id='captcha_img'><label for="id_captcha">验证（必填）：</label>
+                {{form.captcha}}
+                <input id='comment_submit' name="post" value="提交评论" type="submit" />
+            </p>
+            <p style="display:none;">
+                <label for="id_honeypot">如果你在该字段中输入任何内容，那么你的评论就会被视为垃圾评论。</label>
+                <input type="text" name="honeypot" id="id_honeypot">
+            </p>
+            <input type='hidden' name='next' value='{%url postByID post.id%}' />
+        </form>
+    </div>
+</div>
+{%endblock%}

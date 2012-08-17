@@ -1,0 +1,1 @@
+a django blog,now it is just a demo for study,i will improve it later.

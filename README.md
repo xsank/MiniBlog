@@ -1,1 +1,19 @@
-a django blog,now it is just a demo for study,i will improve it later.
+迷你博客
+============
+
+这是很早以前写的一个简单的博客系统，拥有基本的博客功能，界面仿造经典Wordpress。
+
+
+
+依赖包
+------------
+1. captcha        验证码功能
+2. filebrowser    文件上传功能
+3. grappelli      美化admin
+4. tinymce        富文本编辑器
+
+
+
+其他
+------------
+暂且比较忙，有空把这个完善下，个人感觉对于最初用django入门的话，这是个不错的学习Demo
